@@ -182,6 +182,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="VOLTAR"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoVoltarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoLogar">
               <Properties>
@@ -193,6 +196,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="LOGAR"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoLogarActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

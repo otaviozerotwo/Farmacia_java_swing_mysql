@@ -35,13 +35,11 @@ public class MenuInicial extends javax.swing.JFrame {
         labelTitulo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
-        menuAlterarSenha = new javax.swing.JMenu();
+        menuAlterarSenha = new javax.swing.JMenuItem();
         menuCadastro = new javax.swing.JMenu();
-        menuClientes = new javax.swing.JMenu();
-        menuProdutos = new javax.swing.JMenu();
-        menuMedicos = new javax.swing.JMenu();
-        menuOrcamentos = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
+        menuCadastroCliente = new javax.swing.JMenuItem();
+        menuCadastroMedicos = new javax.swing.JMenuItem();
+        menuCadastroProdutos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Farmácias 1.0");
@@ -58,10 +56,20 @@ public class MenuInicial extends javax.swing.JFrame {
         botaoLogar.setBackground(new java.awt.Color(153, 153, 153));
         botaoLogar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botaoLogar.setText("LOGAR");
+        botaoLogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoLogarActionPerformed(evt);
+            }
+        });
 
         botaoSair.setBackground(new java.awt.Color(153, 153, 153));
         botaoSair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botaoSair.setText("SAIR");
+        botaoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelBotoesLayout = new javax.swing.GroupLayout(painelBotoes);
         painelBotoes.setLayout(painelBotoesLayout);
@@ -136,23 +144,31 @@ public class MenuInicial extends javax.swing.JFrame {
 
         menuCadastro.setText("Cadastro");
 
-        menuClientes.setText("Clientes");
-        menuCadastro.add(menuClientes);
+        menuCadastroCliente.setText("Clientes");
+        menuCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastroClienteActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuCadastroCliente);
 
-        menuProdutos.setText("Produtos");
-        menuCadastro.add(menuProdutos);
+        menuCadastroMedicos.setText("Médicos");
+        menuCadastroMedicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastroMedicosActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuCadastroMedicos);
 
-        menuMedicos.setText("Médicos");
-        menuCadastro.add(menuMedicos);
+        menuCadastroProdutos.setText("Produtos");
+        menuCadastroProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadastroProdutosActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuCadastroProdutos);
 
         jMenuBar1.add(menuCadastro);
-
-        menuOrcamentos.setText("Orçamentos");
-
-        jMenu1.setText("Consultar Orçamento");
-        menuOrcamentos.add(jMenu1);
-
-        jMenuBar1.add(menuOrcamentos);
 
         setJMenuBar(jMenuBar1);
 
@@ -170,6 +186,35 @@ public class MenuInicial extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_botaoSairActionPerformed
+
+    private void botaoLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLogarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_botaoLogarActionPerformed
+
+    private void menuCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroClienteActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new CadastroClientes().setVisible(true);
+    }//GEN-LAST:event_menuCadastroClienteActionPerformed
+
+    private void menuCadastroMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroMedicosActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new CadastroMedicos().setVisible(true);
+    }//GEN-LAST:event_menuCadastroMedicosActionPerformed
+
+    private void menuCadastroProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroProdutosActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new CadastroProdutos().setVisible(true);
+    }//GEN-LAST:event_menuCadastroProdutosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,17 +257,15 @@ public class MenuInicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogar;
     private javax.swing.JButton botaoSair;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel labelLogo;
     private javax.swing.JLabel labelTitulo;
-    private javax.swing.JMenu menuAlterarSenha;
+    private javax.swing.JMenuItem menuAlterarSenha;
     private javax.swing.JMenu menuArquivo;
     private javax.swing.JMenu menuCadastro;
-    private javax.swing.JMenu menuClientes;
-    private javax.swing.JMenu menuMedicos;
-    private javax.swing.JMenu menuOrcamentos;
-    private javax.swing.JMenu menuProdutos;
+    private javax.swing.JMenuItem menuCadastroCliente;
+    private javax.swing.JMenuItem menuCadastroMedicos;
+    private javax.swing.JMenuItem menuCadastroProdutos;
     private javax.swing.JPanel painelBotoes;
     private javax.swing.JPanel painelLogo;
     private javax.swing.JPanel painelTitulo;

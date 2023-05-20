@@ -9,11 +9,11 @@
             <Property name="text" type="java.lang.String" value="Arquivo"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="menuAlterarSenha">
+            <MenuItem class="javax.swing.JMenuItem" name="menuAlterarSenha">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alterar Senha"/>
               </Properties>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuCadastro">
@@ -21,33 +21,30 @@
             <Property name="text" type="java.lang.String" value="Cadastro"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="menuClientes">
+            <MenuItem class="javax.swing.JMenuItem" name="menuCadastroCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Clientes"/>
               </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="menuProdutos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Produtos"/>
-              </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="menuMedicos">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCadastroClienteActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuCadastroMedicos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="M&#xe9;dicos"/>
               </Properties>
-            </Menu>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="menuOrcamentos">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Or&#xe7;amentos"/>
-          </Properties>
-          <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu1">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCadastroMedicosActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuCadastroProdutos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Consultar Or&#xe7;amento"/>
+                <Property name="text" type="java.lang.String" value="Produtos"/>
               </Properties>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuCadastroProdutosActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -175,6 +172,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="LOGAR"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoLogarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoSair">
               <Properties>
@@ -186,6 +186,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="SAIR"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoSairActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
