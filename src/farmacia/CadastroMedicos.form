@@ -93,7 +93,7 @@
                                               </Group>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="comboCRM" pref="131" max="32767" attributes="0"/>
+                                                  <Component id="comboTipoDocumento" pref="131" max="32767" attributes="0"/>
                                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                                   <Component id="campoCEP" alignment="0" max="32767" attributes="0"/>
                                               </Group>
@@ -160,7 +160,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="comboCRM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboTipoDocumento" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="comboUF" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="rButtonPJuridica" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -210,7 +210,7 @@
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="cc" type="rgb"/>
+              <Color blue="91" green="75" red="0" type="rgb"/>
             </Property>
           </Properties>
 
@@ -236,7 +236,7 @@
                   <Font name="Segoe UI" size="18" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="99" green="99" red="99" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cadastro de M&#xe9;dico"/>
               </Properties>
@@ -246,7 +246,7 @@
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="cc" type="rgb"/>
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
 
@@ -289,6 +289,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="SALVAR"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoSalvarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoLimpar">
               <Properties>
@@ -300,6 +303,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="LIMPAR"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoLimparActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="botaoVoltar">
               <Properties>
@@ -336,7 +342,7 @@
             <Property name="text" type="java.lang.String" value="Tipo de documento"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboCRM">
+        <Component class="javax.swing.JComboBox" name="comboTipoDocumento">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">

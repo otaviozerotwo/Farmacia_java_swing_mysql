@@ -68,10 +68,10 @@ public class CadastroProdutos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 117, 145));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cadastro de Produto");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -87,15 +87,25 @@ public class CadastroProdutos extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         botaoSalvar.setBackground(new java.awt.Color(153, 153, 153));
         botaoSalvar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         botaoSalvar.setText("SALVAR");
+        botaoSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSalvarActionPerformed(evt);
+            }
+        });
 
         botaoLimpar.setBackground(new java.awt.Color(153, 153, 153));
         botaoLimpar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         botaoLimpar.setText("LIMPAR");
+        botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoLimparActionPerformed(evt);
+            }
+        });
 
         botaoVoltar.setBackground(new java.awt.Color(153, 153, 153));
         botaoVoltar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -341,6 +351,47 @@ public class CadastroProdutos extends javax.swing.JFrame {
         this.dispose();
         new MenuInicial().setVisible(true);
     }//GEN-LAST:event_botaoVoltarActionPerformed
+
+    private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
+        // TODO add your handling code here:
+        Produto produto = new Produto();
+        
+        produto.setCodigo(campoCodigo.getText());
+        produto.setDescricao(campoDescricao.getText());
+        produto.setEan(campoEAN.getText());
+        if(checkGenerico.isSelected()){
+            produto.setClassificacao("Genérico");
+        }else if(checkAntibiotico.isSelected()){
+            produto.setClassificacao("Antibiótico");
+        }else if(checkControlado.isSelected()){
+            produto.setClassificacao("Controlado");
+        }else if(checkSimilar.isSelected()){
+            produto.setClassificacao("Similar");
+        }else{
+            produto.setClassificacao("");
+        }
+        produto.setFabricante(campoFabricante.getText());
+        produto.setRegistroMS(campoRegistroMS.getText());
+        produto.setUnidadeMedida((String)comboUnidadeMedida.getSelectedItem());
+        produto.setTipoReceita((String)comboTipoReceita.getSelectedItem());
+        produto.setCorReceita((String)comboCorReceita.getSelectedItem());
+        produto.setPrincipioAtivo(campoPrincipioAtivo.getText());
+        produto.setPosologia(campoAreaPosologia.getText());
+        
+        new TabelaDadosProduto(produto).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoSalvarActionPerformed
+
+    private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
+        // TODO add your handling code here:
+        campoCodigo.setText("");
+        campoDescricao.setText("");
+        campoEAN.setText("");
+        campoFabricante.setText("");
+        campoRegistroMS.setText("");
+        campoPrincipioAtivo.setText("");
+        campoAreaPosologia.setText("");
+    }//GEN-LAST:event_botaoLimparActionPerformed
 
     /**
      * @param args the command line arguments

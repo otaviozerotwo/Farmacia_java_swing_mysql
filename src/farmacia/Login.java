@@ -49,10 +49,10 @@ public class Login extends javax.swing.JFrame {
         labelSenha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelSenha.setText("Senha");
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 117, 145));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Seja Bem-Vindo");
 
@@ -69,7 +69,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         botaoVoltar.setBackground(new java.awt.Color(153, 153, 153));
         botaoVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -83,6 +83,15 @@ public class Login extends javax.swing.JFrame {
         botaoLogar.setBackground(new java.awt.Color(152, 153, 153));
         botaoLogar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botaoLogar.setText("LOGAR");
+        botaoLogar.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                botaoLogarAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         botaoLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoLogarActionPerformed(evt);
@@ -165,9 +174,17 @@ public class Login extends javax.swing.JFrame {
 
     private void botaoLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLogarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        new MenuInicial().setVisible(true);
+        if(campoUsuario.getText().equals("") || campoSenha.getPassword().equals("")){
+            new ErroLogin().setVisible(true);
+        }else{
+            this.dispose();
+            new MenuInicial().setVisible(true);
+        }
     }//GEN-LAST:event_botaoLogarActionPerformed
+
+    private void botaoLogarAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_botaoLogarAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoLogarAncestorAdded
 
     /**
      * @param args the command line arguments

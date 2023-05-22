@@ -4,6 +4,8 @@
  */
 package farmacia;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lies
@@ -66,10 +68,10 @@ public class CadastroClientes extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 117, 145));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Cadastro de Cliente");
 
@@ -86,7 +88,7 @@ public class CadastroClientes extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         botaoSalvar.setBackground(new java.awt.Color(153, 153, 153));
         botaoSalvar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -100,6 +102,11 @@ public class CadastroClientes extends javax.swing.JFrame {
         botaoLimpar.setBackground(new java.awt.Color(153, 153, 153));
         botaoLimpar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         botaoLimpar.setText("LIMPAR");
+        botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoLimparActionPerformed(evt);
+            }
+        });
 
         botaoVoltar.setBackground(new java.awt.Color(153, 153, 153));
         botaoVoltar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -210,13 +217,14 @@ public class CadastroClientes extends javax.swing.JFrame {
                                     .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5))
                                 .addGap(25, 25, 25)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel6)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(comboEstado, 0, 1, Short.MAX_VALUE)
+                                    .addComponent(campoNumero)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(campoNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel9))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,24 +320,50 @@ public class CadastroClientes extends javax.swing.JFrame {
 
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
         // TODO add your handling code here:
-        Cliente cliente1 = new Cliente();
+        Cliente cliente = new Cliente();
+//        ArrayList <Cliente> listaCliente = new ArrayList<>();
+                        
+        cliente.setCpf(campoCPF.getText());
+        cliente.setNome(campoNome.getText());
+        cliente.setCep(campoCEP.getText());
+        cliente.setEndereco(campoEndereco.getText());
+        cliente.setNumero(campoNumero.getText());
+        cliente.setCidade(campoCidade.getText());
+        cliente.setBairro(campoBairro.getText());
+        cliente.setEstado((String)comboEstado.getSelectedItem());
+        cliente.setTelefone(campoTelefone.getText());
+        cliente.setEmail(campoEmail.getText());
+        cliente.setDataNascimento(campoDtNascimento.getText());
         
-        cliente1.setCpf(campoCPF.getText());
-        cliente1.setNome(campoNome.getText());
-        cliente1.setCep(campoCEP.getText());
-        cliente1.setEndereco(campoEndereco.getText());
-        //cliente1.setNumero(campoNumero.getText());
-        cliente1.setCidade(campoCidade.getText());
-        cliente1.setBairro(campoBairro.getText());
-        cliente1.setEstado(comboEstado.TOOL_TIP_TEXT_KEY);
-        cliente1.setTelefone(campoTelefone.getText());
-        cliente1.setEmail(campoEmail.getText());
-        cliente1.setDataNascimento(campoDtNascimento.getText());
-        //cliente1.setSexo();
+        if(rButtonFeminino.isSelected()){
+            cliente.setSexo("Feminino");
+        }else if(rButtonMasculino.isSelected()){
+            cliente.setSexo("Masculino");
+        }else if(rButtonNaoInformar.isSelected()){
+            cliente.setSexo("Prefiro não informar");
+        }else{
+            cliente.setSexo("");
+        }
         
+//        listaCliente.add(cliente);
+        
+        new TabelaDadosCliente(cliente).setVisible(true);
         this.dispose();
-        //new TabelaDadosCliente(cliente1).setVisible(true);
     }//GEN-LAST:event_botaoSalvarActionPerformed
+
+    private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
+        // TODO add your handling code here:
+        campoCPF.setText("");
+        campoNome.setText("");
+        campoCEP.setText("");
+        campoEndereco.setText("");
+        campoNumero.setText("");
+        campoCidade.setText("");
+        campoBairro.setText("");
+        campoTelefone.setText("");
+        campoEmail.setText("");
+        campoDtNascimento.setText("");
+    }//GEN-LAST:event_botaoLimparActionPerformed
 
     /**
      * @param args the command line arguments

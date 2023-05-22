@@ -13,7 +13,7 @@ public class Cliente {
     private String nome;
     private String cep;
     private String endereco;
-    private int numero;
+    private String numero;
     private String cidade;
     private String bairro;
     private String estado;
@@ -54,11 +54,11 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

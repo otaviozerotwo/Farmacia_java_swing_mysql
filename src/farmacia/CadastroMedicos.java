@@ -39,7 +39,7 @@ public class CadastroMedicos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        comboCRM = new javax.swing.JComboBox<>();
+        comboTipoDocumento = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         comboUF = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
@@ -66,10 +66,10 @@ public class CadastroMedicos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 117, 145));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cadastro de Médico");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -85,15 +85,25 @@ public class CadastroMedicos extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         botaoSalvar.setBackground(new java.awt.Color(153, 153, 153));
         botaoSalvar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         botaoSalvar.setText("SALVAR");
+        botaoSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSalvarActionPerformed(evt);
+            }
+        });
 
         botaoLimpar.setBackground(new java.awt.Color(153, 153, 153));
         botaoLimpar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         botaoLimpar.setText("LIMPAR");
+        botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoLimparActionPerformed(evt);
+            }
+        });
 
         botaoVoltar.setBackground(new java.awt.Color(153, 153, 153));
         botaoVoltar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -134,7 +144,7 @@ public class CadastroMedicos extends javax.swing.JFrame {
 
         jLabel4.setText("Tipo de documento");
 
-        comboCRM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CRM", "CRO", "CRMV", "CRF" }));
+        comboTipoDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CRM", "CRO", "CRMV", "CRF" }));
 
         jLabel5.setText("UF");
 
@@ -206,7 +216,7 @@ public class CadastroMedicos extends javax.swing.JFrame {
                                                 .addComponent(jLabel8))
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(comboCRM, 0, 131, Short.MAX_VALUE)
+                                                .addComponent(comboTipoDocumento, 0, 131, Short.MAX_VALUE)
                                                 .addComponent(jLabel11)
                                                 .addComponent(campoCEP))
                                             .addGap(18, 18, 18)))
@@ -254,7 +264,7 @@ public class CadastroMedicos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(comboCRM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboTipoDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(comboUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(rButtonPJuridica))
                     .addComponent(campoNumDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -310,6 +320,47 @@ public class CadastroMedicos extends javax.swing.JFrame {
         new MenuInicial().setVisible(true);
     }//GEN-LAST:event_botaoVoltarActionPerformed
 
+    private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
+        // TODO add your handling code here:
+        Medico medico = new Medico();
+        
+        medico.setCnpjCpf(campoCNPJ.getText());
+        medico.setNome(campoNome.getText());
+        if(rButtonPFisica.isSelected()){
+            medico.setTipoPessoa("Física");
+        }else if(rButtonPJuridica.isSelected()){
+            medico.setTipoPessoa("Jurídica");
+        }else{
+            medico.setTipoPessoa("");
+        }
+        medico.setTipoDocumento((String)comboTipoDocumento.getSelectedItem());
+        medico.setUf((String)comboUF.getSelectedItem());
+        medico.setNumDocumento(campoNumDocumento.getText());
+        medico.setCidade(campoCidade.getText());
+        medico.setCep(campoCEP.getText());
+        medico.setEspecialidade((String)comboEspecialidade.getSelectedItem());
+        medico.setEndereco(campoEndereco.getText());
+        medico.setBairro(campoBairro.getText());
+        medico.setTelefone(campoTelefone.getText());
+        medico.setEmail(campoEmail.getText());
+        
+        new TabelaDadosMedico(medico).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botaoSalvarActionPerformed
+
+    private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
+        // TODO add your handling code here:
+        campoCNPJ.setText("");
+        campoNome.setText("");
+        campoNumDocumento.setText("");
+        campoCidade.setText("");
+        campoCEP.setText("");
+        campoEndereco.setText("");
+        campoBairro.setText("");
+        campoTelefone.setText("");
+        campoEmail.setText("");
+    }//GEN-LAST:event_botaoLimparActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -358,8 +409,8 @@ public class CadastroMedicos extends javax.swing.JFrame {
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoNumDocumento;
     private javax.swing.JTextField campoTelefone;
-    private javax.swing.JComboBox<String> comboCRM;
     private javax.swing.JComboBox<String> comboEspecialidade;
+    private javax.swing.JComboBox<String> comboTipoDocumento;
     private javax.swing.JComboBox<String> comboUF;
     private javax.swing.ButtonGroup grupoRadioButton;
     private javax.swing.JLabel jLabel1;

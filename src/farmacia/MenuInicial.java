@@ -34,8 +34,6 @@ public class MenuInicial extends javax.swing.JFrame {
         painelTitulo = new javax.swing.JPanel();
         labelTitulo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menuArquivo = new javax.swing.JMenu();
-        menuAlterarSenha = new javax.swing.JMenuItem();
         menuCadastro = new javax.swing.JMenu();
         menuCadastroCliente = new javax.swing.JMenuItem();
         menuCadastroMedicos = new javax.swing.JMenuItem();
@@ -51,7 +49,7 @@ public class MenuInicial extends javax.swing.JFrame {
         labelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/farmacia/logo.png"))); // NOI18N
 
-        painelBotoes.setBackground(new java.awt.Color(204, 255, 255));
+        painelBotoes.setBackground(new java.awt.Color(255, 255, 255));
 
         botaoLogar.setBackground(new java.awt.Color(153, 153, 153));
         botaoLogar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -92,11 +90,11 @@ public class MenuInicial extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        painelTitulo.setBackground(new java.awt.Color(204, 255, 255));
+        painelTitulo.setBackground(new java.awt.Color(0, 117, 145));
 
         labelTitulo.setBackground(new java.awt.Color(153, 153, 153));
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
-        labelTitulo.setForeground(new java.awt.Color(153, 153, 153));
+        labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTitulo.setText("Farmácias 1.0");
 
@@ -134,13 +132,6 @@ public class MenuInicial extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(painelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        menuArquivo.setText("Arquivo");
-
-        menuAlterarSenha.setText("Alterar Senha");
-        menuArquivo.add(menuAlterarSenha);
-
-        jMenuBar1.add(menuArquivo);
 
         menuCadastro.setText("Cadastro");
 
@@ -260,8 +251,6 @@ public class MenuInicial extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel labelLogo;
     private javax.swing.JLabel labelTitulo;
-    private javax.swing.JMenuItem menuAlterarSenha;
-    private javax.swing.JMenu menuArquivo;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenuItem menuCadastroCliente;
     private javax.swing.JMenuItem menuCadastroMedicos;

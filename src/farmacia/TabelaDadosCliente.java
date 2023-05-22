@@ -4,6 +4,9 @@
  */
 package farmacia;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author lies
@@ -15,6 +18,27 @@ public class TabelaDadosCliente extends javax.swing.JFrame {
      */
     public TabelaDadosCliente() {
         initComponents();
+    }
+    
+    public TabelaDadosCliente(Cliente cliente){
+        initComponents();
+        
+        DefaultTableModel modelo = (DefaultTableModel)tabelaClientes.getModel();
+            Object[] dados = {
+                cliente.getCpf(), 
+                cliente.getNome(), 
+                cliente.getCep(), 
+                cliente.getEndereco(),
+                cliente.getNumero(),
+                cliente.getCidade(),
+                cliente.getBairro(),
+                cliente.getEstado(),
+                cliente.getTelefone(),
+                cliente.getEmail(),
+                cliente.getDataNascimento(),
+                cliente.getSexo()
+            };
+            modelo.addRow(dados);
     }
 
     /**
@@ -32,16 +56,17 @@ public class TabelaDadosCliente extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         botaoVoltar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaClientes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Farmácias 1.0");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 117, 145));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Consulta Cadastro de Cliente");
 
@@ -58,7 +83,7 @@ public class TabelaDadosCliente extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         botaoVoltar.setBackground(new java.awt.Color(153, 153, 153));
         botaoVoltar.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -88,7 +113,7 @@ public class TabelaDadosCliente extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -111,7 +136,7 @@ public class TabelaDadosCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaClientes);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -197,6 +222,6 @@ public class TabelaDadosCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaClientes;
     // End of variables declaration//GEN-END:variables
 }
