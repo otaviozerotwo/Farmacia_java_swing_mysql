@@ -4,6 +4,8 @@
  */
 package farmacia;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lies
@@ -355,6 +357,7 @@ public class CadastroProdutos extends javax.swing.JFrame {
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
         // TODO add your handling code here:
         Produto produto = new Produto();
+        ArrayList<Produto> listaProduto = new ArrayList<>();
         
         produto.setCodigo(campoCodigo.getText());
         produto.setDescricao(campoDescricao.getText());
@@ -378,7 +381,9 @@ public class CadastroProdutos extends javax.swing.JFrame {
         produto.setPrincipioAtivo(campoPrincipioAtivo.getText());
         produto.setPosologia(campoAreaPosologia.getText());
         
-        new TabelaDadosProduto(produto).setVisible(true);
+        listaProduto.add(produto);
+        
+        new TabelaDadosProduto(listaProduto).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoSalvarActionPerformed
 

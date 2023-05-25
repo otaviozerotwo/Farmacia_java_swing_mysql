@@ -4,6 +4,7 @@
  */
 package farmacia;
 
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,24 +20,43 @@ public class TabelaDadosProduto extends javax.swing.JFrame {
         initComponents();
     }
     
-    public TabelaDadosProduto(Produto produto){
+    public TabelaDadosProduto(ArrayList<Produto> listaProduto){
         initComponents();
         
-        DefaultTableModel modelo = (DefaultTableModel)tabelaProdutos.getModel();
-            Object[] dados = {
-                produto.getCodigo(),
-                produto.getDescricao(),
-                produto.getEan(),
-                produto.getClassificacao(),
-                produto.getFabricante(),
-                produto.getRegistroMS(),
-                produto.getUnidadeMedida(),
-                produto.getTipoReceita(),
-                produto.getCorReceita(),
-                produto.getPrincipioAtivo(),
-                produto.getPosologia()
-            };
-            modelo.addRow(dados);
+        Object[][] dados = new Object[listaProduto.size()][11];
+        
+        for(int i = 0; i < listaProduto.size(); i++){
+            Produto produto = listaProduto.get(i);
+            
+            dados[i][0] = produto.getCodigo();
+            dados[i][1] = produto.getDescricao();
+            dados[i][2] = produto.getEan();
+            dados[i][3] = produto.getClassificacao();
+            dados[i][4] = produto.getFabricante();
+            dados[i][5] = produto.getRegistroMS();
+            dados[i][6] = produto.getUnidadeMedida();
+            dados[i][7] = produto.getTipoReceita();
+            dados[i][8] = produto.getCorReceita();
+            dados[i][9] = produto.getPrincipioAtivo();
+            dados[i][10] = produto.getPosologia();
+        }
+        String[] colunas = {
+            "CÓDIGO",
+            "DESCRIÇÃO",
+            "EAN",
+            "CLASSIFICAÇÃO",
+            "FABRICANTE",
+            "REGISTRO MS",
+            "UNIDADE MEDIDA",
+            "TIPO RECEITA",
+            "COR RECEITA",
+            "PRINCÍPIO ATIVO",
+            "POSOLOGIA",
+        };
+        
+        DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
+        tabelaProdutos.setModel(modelo);
+        
     }
 
     /**

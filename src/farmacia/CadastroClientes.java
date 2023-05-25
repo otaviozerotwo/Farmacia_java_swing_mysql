@@ -321,7 +321,7 @@ public class CadastroClientes extends javax.swing.JFrame {
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
         // TODO add your handling code here:
         Cliente cliente = new Cliente();
-//        ArrayList <Cliente> listaCliente = new ArrayList<>();
+        ArrayList <Cliente> listaCliente = new ArrayList<>();
                         
         cliente.setCpf(campoCPF.getText());
         cliente.setNome(campoNome.getText());
@@ -345,9 +345,9 @@ public class CadastroClientes extends javax.swing.JFrame {
             cliente.setSexo("");
         }
         
-//        listaCliente.add(cliente);
+        listaCliente.add(cliente);
         
-        new TabelaDadosCliente(cliente).setVisible(true);
+        new TabelaDadosCliente(listaCliente).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoSalvarActionPerformed
 

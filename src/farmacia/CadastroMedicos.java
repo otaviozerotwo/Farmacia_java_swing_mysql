@@ -4,6 +4,8 @@
  */
 package farmacia;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lies
@@ -323,6 +325,7 @@ public class CadastroMedicos extends javax.swing.JFrame {
     private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
         // TODO add your handling code here:
         Medico medico = new Medico();
+        ArrayList<Medico> listaMedico = new ArrayList<>();
         
         medico.setCnpjCpf(campoCNPJ.getText());
         medico.setNome(campoNome.getText());
@@ -344,7 +347,9 @@ public class CadastroMedicos extends javax.swing.JFrame {
         medico.setTelefone(campoTelefone.getText());
         medico.setEmail(campoEmail.getText());
         
-        new TabelaDadosMedico(medico).setVisible(true);
+        listaMedico.add(medico);
+        
+        new TabelaDadosMedico(listaMedico).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botaoSalvarActionPerformed
 

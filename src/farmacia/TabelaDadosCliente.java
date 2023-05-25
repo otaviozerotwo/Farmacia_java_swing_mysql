@@ -20,25 +20,44 @@ public class TabelaDadosCliente extends javax.swing.JFrame {
         initComponents();
     }
     
-    public TabelaDadosCliente(Cliente cliente){
+    public TabelaDadosCliente(ArrayList<Cliente> listaCliente){
         initComponents();
         
-        DefaultTableModel modelo = (DefaultTableModel)tabelaClientes.getModel();
-            Object[] dados = {
-                cliente.getCpf(), 
-                cliente.getNome(), 
-                cliente.getCep(), 
-                cliente.getEndereco(),
-                cliente.getNumero(),
-                cliente.getCidade(),
-                cliente.getBairro(),
-                cliente.getEstado(),
-                cliente.getTelefone(),
-                cliente.getEmail(),
-                cliente.getDataNascimento(),
-                cliente.getSexo()
-            };
-            modelo.addRow(dados);
+        Object[][] dados = new Object[listaCliente.size()][12];
+            
+        for(int i = 0; i < listaCliente.size(); i++){
+            Cliente cliente = listaCliente.get(i);
+            
+            dados[i][0] = cliente.getCpf();
+            dados[i][1] = cliente.getNome();
+            dados[i][2] = cliente.getCep();
+            dados[i][3] = cliente.getEndereco();
+            dados[i][4] = cliente.getNumero();
+            dados[i][5] = cliente.getCidade();
+            dados[i][6] = cliente.getBairro();
+            dados[i][7] = cliente.getEstado();
+            dados[i][8] = cliente.getTelefone();
+            dados[i][9] = cliente.getEmail();
+            dados[i][10] = cliente.getDataNascimento();
+            dados[i][11] = cliente.getSexo();
+        }
+        String[] colunas = {
+            "CPF",
+            "NOME",
+            "CEP",
+            "ENDEREÇO",
+            "NÚMERO",
+            "CIDADE",
+            "BAIRRO",
+            "ESTADO",
+            "TELEFONE",
+            "E-MAIL",
+            "DATA NASCIMENTO",
+            "SEXO"
+        };
+        
+        DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
+        tabelaClientes.setModel(modelo);
     }
 
     /**

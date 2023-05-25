@@ -4,6 +4,7 @@
  */
 package farmacia;
 
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,26 +20,47 @@ public class TabelaDadosMedico extends javax.swing.JFrame {
         initComponents();
     }
     
-    public TabelaDadosMedico(Medico medico){
+    public TabelaDadosMedico(ArrayList<Medico> listaMedico){
         initComponents();
         
-        DefaultTableModel modelo = (DefaultTableModel)tabelaMedicos.getModel();
-            Object[] dados = {
-                medico.getCnpjCpf(),
-                medico.getNome(),
-                medico.getTipoPessoa(),
-                medico.getTipoDocumento(),
-                medico.getUf(),
-                medico.getNumDocumento(),
-                medico.getCidade(),
-                medico.getCep(),
-                medico.getEspecialidade(),
-                medico.getEndereco(),
-                medico.getBairro(),
-                medico.getTelefone(),
-                medico.getEmail()
-            };
-            modelo.addRow(dados);
+        Object[][] dados = new Object[listaMedico.size()][13];
+        
+        for(int i = 0; i < listaMedico.size(); i++){
+            Medico medico = listaMedico.get(i);
+            
+            dados[i][0] = medico.getCnpjCpf();
+            dados[i][1] = medico.getNome();
+            dados[i][2] = medico.getTipoPessoa();
+            dados[i][3] = medico.getTipoDocumento();
+            dados[i][4] = medico.getUf();
+            dados[i][5] = medico.getNumDocumento();
+            dados[i][6] = medico.getCidade();
+            dados[i][7] = medico.getCep();
+            dados[i][8] = medico.getEspecialidade();
+            dados[i][9] = medico.getEndereco();
+            dados[i][10] = medico.getBairro();
+            dados[i][11] = medico.getTelefone();
+            dados[i][12] = medico.getEmail();
+        }
+        String[] colunas = {
+            "CNPJ/CPF",
+            "NOME",
+            "TIPO PESSOA",
+            "TIPO DOCUMENTO",
+            "UF",
+            "NUM DOCUMENTO",
+            "CIDADE",
+            "CEP",
+            "ESPECIALIDADE",
+            "ENDEREÇO",
+            "BAIRRO",
+            "TELEFONE",
+            "E-MAIL",
+        };
+        
+        DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
+        tabelaMedicos.setModel(modelo);
+            
     }
 
     /**
