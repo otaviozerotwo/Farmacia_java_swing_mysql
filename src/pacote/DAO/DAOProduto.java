@@ -131,16 +131,16 @@ public class DAOProduto {
     public boolean alterarProduto(Produto produto){
         conectar();
         String sql = "UPDATE PRODUTO SET "
-                + "CODIGO = ?, "
-                + "DESCRICAO = ? "
-                + "EAN = ?"
-                + "CLASSIFICACAO = ?"
-                + "FABRICANTE = ?"
-                + "REGISTRO_MS = ?"
-                + "UNIDADE_MEDIDA = ?"
-                + "TIPO_RECEITA = ?"
-                + "COR_RECEITA = ?"
-                + "PRINCIPIO_ATIVO = ?"
+                + "CODIGO = ?,"
+                + "DESCRICAO = ?,"
+                + "EAN = ?,"
+                + "CLASSIFICACAO = ?,"
+                + "FABRICANTE = ?,"
+                + "REGISTRO_MS = ?,"
+                + "UNIDADE_MEDIDA = ?,"
+                + "TIPO_RECEITA = ?,"
+                + "COR_RECEITA = ?,"
+                + "PRINCIPIO_ATIVO = ?,"
                 + "POSOLOGIA = ?"
                 + "WHERE ID = ?";
         
@@ -157,6 +157,7 @@ public class DAOProduto {
             comando.setString(9, produto.getCorReceita());
             comando.setString(10, produto.getPrincipioAtivo());
             comando.setString(11, produto.getPosologia());
+            comando.setInt(12, produto.getId());
             
             comando.executeUpdate();
             

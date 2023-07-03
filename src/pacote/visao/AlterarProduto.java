@@ -30,6 +30,7 @@ public class AlterarProduto extends javax.swing.JFrame {
         
         for(Produto produto : listaProdutos){
             Object[] dados = {
+                produto.getId(),
                 produto.getCodigo(),
                 produto.getDescricao(),
                 produto.getEan(),
@@ -76,14 +77,14 @@ public class AlterarProduto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CÓDIGO", "DESCRIÇÃO", "EAN", "CLASSIFICAÇÃO", "FABRICANTE", "REGISTRO_MS", "UNIDADE_MEDIDA", "TIPO_RECEITA", "COR_RECEITA", "PRINCÍPIO_ATIVO", "POSOLOGIA"
+                "#", "CÓDIGO", "DESCRIÇÃO", "EAN", "CLASSIFICAÇÃO", "FABRICANTE", "REGISTRO_MS", "UNIDADE_MEDIDA", "TIPO_RECEITA", "COR_RECEITA", "PRINCÍPIO_ATIVO", "POSOLOGIA"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -154,18 +155,19 @@ public class AlterarProduto extends javax.swing.JFrame {
             Produto produto = new Produto();
 
             int linha = tabelaDadosProduto.getSelectedRow();
-
-            produto.setCodigo(tabelaDadosProduto.getValueAt(linha, 0).toString());
-            produto.setDescricao(tabelaDadosProduto.getValueAt(linha, 1).toString());
-            produto.setEan(tabelaDadosProduto.getValueAt(linha, 2).toString());
-            produto.setClassificacao(tabelaDadosProduto.getValueAt(linha, 3).toString());
-            produto.setFabricante(tabelaDadosProduto.getValueAt(linha, 4).toString());
-            produto.setRegistroMS(tabelaDadosProduto.getValueAt(linha, 5).toString());
-            produto.setUnidadeMedida(tabelaDadosProduto.getValueAt(linha, 6).toString());
-            produto.setTipoReceita(tabelaDadosProduto.getValueAt(linha, 7).toString());
-            produto.setCorReceita(tabelaDadosProduto.getValueAt(linha, 8).toString());
-            produto.setPrincipioAtivo(tabelaDadosProduto.getValueAt(linha, 9).toString());
-            produto.setPosologia(tabelaDadosProduto.getValueAt(linha, 10).toString());
+            
+            produto.setId(Integer.parseInt(tabelaDadosProduto.getValueAt(linha, 0).toString()));
+            produto.setCodigo(tabelaDadosProduto.getValueAt(linha, 1).toString());
+            produto.setDescricao(tabelaDadosProduto.getValueAt(linha, 2).toString());
+            produto.setEan(tabelaDadosProduto.getValueAt(linha, 3).toString());
+            produto.setClassificacao(tabelaDadosProduto.getValueAt(linha, 4).toString());
+            produto.setFabricante(tabelaDadosProduto.getValueAt(linha, 5).toString());
+            produto.setRegistroMS(tabelaDadosProduto.getValueAt(linha, 6).toString());
+            produto.setUnidadeMedida(tabelaDadosProduto.getValueAt(linha, 7).toString());
+            produto.setTipoReceita(tabelaDadosProduto.getValueAt(linha, 8).toString());
+            produto.setCorReceita(tabelaDadosProduto.getValueAt(linha, 9).toString());
+            produto.setPrincipioAtivo(tabelaDadosProduto.getValueAt(linha, 10).toString());
+            produto.setPosologia(tabelaDadosProduto.getValueAt(linha, 11).toString());
             
             new AlterarProdutoFormulario(produto).setVisible(true);
             dispose();

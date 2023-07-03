@@ -29,6 +29,7 @@ public class AlterarMedico extends javax.swing.JFrame {
         
         for(Medico medico : listaMedicos){
             Object[] dados = {
+                medico.getId(),
                 medico.getCnpjCpf(),
                 medico.getNome(),
                 medico.getTipoPessoa(),
@@ -83,14 +84,14 @@ public class AlterarMedico extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CNPJ_CPF", "NOME", "TIPO_PESSOA", "TIPO_DOCUMENTO", "UF", "NUM_DOCUMENTO", "CIDADE", "CEP", "ESPECIALIDADE", "ENDEREÇO", "BAIRRO", "TELEFONE", "E-MAIL"
+                "#", "CNPJ_CPF", "NOME", "TIPO_PESSOA", "TIPO_DOCUMENTO", "UF", "NUM_DOCUMENTO", "CIDADE", "CEP", "ESPECIALIDADE", "ENDEREÇO", "BAIRRO", "TELEFONE", "E-MAIL"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -145,20 +146,21 @@ public class AlterarMedico extends javax.swing.JFrame {
             Medico medico = new Medico();
 
             int linha = tabelaDadosMedico.getSelectedRow();
-
-            medico.setCnpjCpf(tabelaDadosMedico.getValueAt(linha, 0).toString());
-            medico.setNome(tabelaDadosMedico.getValueAt(linha, 1).toString());
-            medico.setTipoPessoa(tabelaDadosMedico.getValueAt(linha, 2).toString());
-            medico.setTipoDocumento(tabelaDadosMedico.getValueAt(linha, 3).toString());
-            medico.setUf(tabelaDadosMedico.getValueAt(linha, 4).toString());
-            medico.setNumDocumento(tabelaDadosMedico.getValueAt(linha, 5).toString());
-            medico.setCidade(tabelaDadosMedico.getValueAt(linha, 6).toString());
-            medico.setCep(tabelaDadosMedico.getValueAt(linha, 7).toString());
-            medico.setEspecialidade(tabelaDadosMedico.getValueAt(linha, 8).toString());
-            medico.setEndereco(tabelaDadosMedico.getValueAt(linha, 9).toString());
-            medico.setBairro(tabelaDadosMedico.getValueAt(linha, 10).toString());
-            medico.setTelefone(tabelaDadosMedico.getValueAt(linha, 11).toString());
-            medico.setEmail(tabelaDadosMedico.getValueAt(linha, 12).toString());
+            
+            medico.setId(Integer.parseInt(tabelaDadosMedico.getValueAt(linha, 0).toString()));
+            medico.setCnpjCpf(tabelaDadosMedico.getValueAt(linha, 1).toString());
+            medico.setNome(tabelaDadosMedico.getValueAt(linha, 2).toString());
+            medico.setTipoPessoa(tabelaDadosMedico.getValueAt(linha, 3).toString());
+            medico.setTipoDocumento(tabelaDadosMedico.getValueAt(linha, 4).toString());
+            medico.setUf(tabelaDadosMedico.getValueAt(linha, 5).toString());
+            medico.setNumDocumento(tabelaDadosMedico.getValueAt(linha, 6).toString());
+            medico.setCidade(tabelaDadosMedico.getValueAt(linha, 7).toString());
+            medico.setCep(tabelaDadosMedico.getValueAt(linha, 8).toString());
+            medico.setEspecialidade(tabelaDadosMedico.getValueAt(linha, 9).toString());
+            medico.setEndereco(tabelaDadosMedico.getValueAt(linha, 10).toString());
+            medico.setBairro(tabelaDadosMedico.getValueAt(linha, 11).toString());
+            medico.setTelefone(tabelaDadosMedico.getValueAt(linha, 12).toString());
+            medico.setEmail(tabelaDadosMedico.getValueAt(linha, 13).toString());
             
             new AlterarMedicoFormulario(medico).setVisible(true);
             dispose();

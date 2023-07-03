@@ -137,17 +137,17 @@ public class DAOMedico {
         conectar();
         String sql = "UPDATE MEDICO SET "
                 + "CNPJ_CPF = ?, "
-                + "NOME = ? "
-                + "TIPO_PESSOA = ?"
-                + "TIPO_DOCUMENTO = ?"
-                + "UF = ?"
-                + "NUM_DOCUMENTO = ?"
-                + "CIDADE = ?"
-                + "CEP = ?"
-                + "ESPECIALIDADE = ?"
-                + "ENDERECO = ?"
-                + "BAIRRO = ?"
-                + "TELEFONE = ?"
+                + "NOME = ?, "
+                + "TIPO_PESSOA = ?,"
+                + "TIPO_DOCUMENTO = ?,"
+                + "UF = ?,"
+                + "NUM_DOCUMENTO = ?,"
+                + "CIDADE = ?,"
+                + "CEP = ?,"
+                + "ESPECIALIDADE = ?,"
+                + "ENDERECO = ?,"
+                + "BAIRRO = ?,"
+                + "TELEFONE = ?,"
                 + "EMAIL = ?"
                 + "WHERE ID = ?";
         
@@ -166,6 +166,7 @@ public class DAOMedico {
             comando.setString(11, medico.getBairro());
             comando.setString(12, medico.getTelefone());
             comando.setString(13, medico.getEmail());
+            comando.setInt(14, medico.getId());
             
             comando.executeUpdate();
             
